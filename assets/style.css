@@ -1,0 +1,89 @@
+@charset "utf-8";
+@import "https://fonts.googleapis.com/css?family=Alegreya+SC|Merriweather|Tangerine";
+@import "https://fonts.googleapis.com/earlyaccess/hannari.css";
+
+@font-face {
+  font-family: "Fira Code";
+  src:
+    local("Fira Code"),
+    url("https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf")
+    format("truetype");
+}
+
+body {
+  margin: 4em 0 2em 2em;
+  background: #FCFAF2;
+  font-family: "Merriweather", "Hannari", serif;
+  font-size: 1em;
+}
+
+h1 {
+  color: #080808;
+  font-family: "Alegreya SC", serif;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+h1 small {
+  font-family: "Tangerine", serif;
+  color: #7DB9DE;
+  font-size: 0.8em;
+  font-weight: normal;
+  padding-right: 0.1em;
+}
+
+.iam h3 {
+  color: #828282;
+  font-size: 0.9em;
+  font-weight: 300;
+  margin: 0px;
+}
+
+h2 {
+  font-family: "Alegreya SC", serif;
+  margin: 1em 0 0.3em 0;
+}
+
+a:hover {
+  background-color: #FEDFE1;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+  font-size: 1em;
+}
+
+a.codelink, a.codelink:visited {
+  color: #51A8DD;
+
+}
+
+a.hidden, a.hidden:visited {
+  color: unset;
+}
+
+ol {
+  font-family: "Merriweather", "Hannari", serif;
+  font-size: 1.1em;
+  list-style-type: hiragana;
+  padding-left: 2em;
+  color: #66BAB7;
+}
+
+ol a, ol a:visited {
+  color: #58B2DC;
+}
+
+.dead {
+  color: #81C7D4;
+  text-decoration: line-through;
+}
+
+.ly {
+  color: #005CAF;
+}
