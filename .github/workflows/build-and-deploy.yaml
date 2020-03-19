@@ -41,9 +41,9 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mv artifact ~/wasme
-          which rsync
           echo $DEPLOY_KEY > key.pem
           chmod 600 key.pem
+          mkdir ~/.ssh
           echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
           chmod +x ~/wasme
           echo ${{ secrets.DEPLOY_CMD }} >> ./sync.sh
