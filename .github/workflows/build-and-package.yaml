@@ -1,0 +1,29 @@
+name: Build and Package
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install cargo-make
+        run: cargo install cargo-make
+      - name: Build
+        run: cargo make build_release
+      - name: Collect artifacts
+        if: failure()
+        run: |
+          mv index.html /artifact/index.html
+          mv assets /artifact/assets
+          mv pkg/package.js /artifact/pkg/package.js
+          mv pkg/package_bg.wasm /artifact/pkg/package_bg.wasm
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: wasme
+          path: /artifact
