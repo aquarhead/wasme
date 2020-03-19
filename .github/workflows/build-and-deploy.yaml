@@ -39,8 +39,8 @@ jobs:
           mv artifact ~/wasme
           echo ${{ secrets.DEPLOY_KEY }} > key.pem
           chmod 600 key.pem
-          echo ${{ SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
+          echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
           chmod +x ~/wasme
-          echo ${{ DEPLOY_CMD }} >> ./sync.sh
+          echo ${{ secrets.DEPLOY_CMD }} >> ./sync.sh
           chmod +x ./sync.sh
           ./sync.sh
