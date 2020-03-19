@@ -15,7 +15,7 @@ jobs:
       - name: Build
         run: cargo make build_release
       - name: Collect artifacts
-        if: failure()
+        if: success()
         run: |
           mv index.html /artifact/index.html
           mv assets /artifact/assets
@@ -23,7 +23,7 @@ jobs:
           mv pkg/package_bg.wasm /artifact/pkg/package_bg.wasm
       - name: Upload artifact
         uses: actions/upload-artifact@v1
-        if: failure()
+        if: success()
         with:
           name: wasme
           path: /artifact
