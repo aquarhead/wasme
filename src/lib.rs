@@ -1,4 +1,5 @@
 use seed::{prelude::*, *};
+use std::cell::Cell;
 
 struct Model {}
 
@@ -13,11 +14,31 @@ enum Msg {}
 
 fn update(_: Msg, _: &mut Model, _: &mut impl Orders<Msg>) {}
 
-fn link(text: &str, href: &str) -> Node<Msg> {
-  li![a![attrs![At::Href => href, At::Target => "_blank"], text]]
+fn hidden(text: &str, href: &str) -> Node<Msg> {
+  a![class!["hidden"], attrs![At::Href => href, At::Target => "_blank"], text]
+}
+
+fn codelink(text: &str, href: &str) -> Node<Msg> {
+  a![
+    class!["codelink"],
+    attrs![At::Href => href, At::Target => "_blank"],
+    text
+  ]
 }
 
 fn view(_: &Model) -> impl View<Msg> {
+  let ref li_count = Cell::new(0);
+
+  let link = |text: &str, href: &str| {
+    li_count.replace(li_count.get() + 1);
+    li![a![attrs![At::Href => href, At::Target => "_blank"], text]]
+  };
+
+  let dead = |text: &str| {
+    li_count.replace(li_count.get() + 1);
+    li![span![class!["dead"], text]]
+  };
+
   div![
     div![
       class!["iam"],
@@ -27,12 +48,18 @@ fn view(_: &Model) -> impl View<Msg> {
     div![
       class!["daily"],
       h2!["Daily"],
-      code!["fun (CCP_Games, SE) -> true."],
+      code![
+        "fun (",
+        codelink("CCP_Games", "https://www.ccpgames.com/"),
+        ", SE) -> ",
+        hidden("true", "https://www.erlang.org/"),
+        ".",
+      ],
       ol![
-        attrs![At::Start => "1"],
+        attrs![At::Start => li_count.get() + 1],
         link("EVE Online", "https://www.eveonline.com/"),
-        li!["DUST 514"],
-        li!["Gunjack"],
+        dead("DUST 514"),
+        dead("Gunjack"),
         link("ESI", "https://esi.evetech.net/"),
         link(
           "EVE Chat",
@@ -43,9 +70,16 @@ fn view(_: &Model) -> impl View<Msg> {
     div![
       class!["indie"],
       h2!["Indie"],
-      code!["(&mut Wizard) |> ElaWorkshop"],
+      code![
+        "(",
+        hidden("&mut", "https://www.rust-lang.org/"),
+        " Wizard) ",
+        hidden("|>", "https://elixir-lang.org/"),
+        " ",
+        codelink("ElaWorkshop", "https://github.com/ElaWorkshop"),
+      ],
       ol![
-        attrs![At::Start => "6"],
+        attrs![At::Start => li_count.get() + 1],
         link("Expanse", "https://ela.build/expense"),
         link("HaloSir", "https://github.com/HaloWordApp/halosir"),
         link("One Clock", "https://ela.build/oneclock"),
@@ -57,7 +91,7 @@ fn view(_: &Model) -> impl View<Msg> {
       class!["links"],
       h2!["Links"],
       ol![
-        attrs![At::Start => "11"],
+        attrs![At::Start => li_count.get() + 1],
         link("GitHub", "https://github.com/aquarhead"),
         link("Twitter", "https://twitter.com/aquarhead"),
         link("Blog", "https://blog.aquarhead.me/"),
