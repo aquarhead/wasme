@@ -17,14 +17,14 @@ jobs:
       - name: Collect artifacts
         if: success()
         run: |
-          mkdir /artifact
-          mv index.html /artifact/index.html
-          mv assets /artifact/assets
-          mv pkg/package.js /artifact/pkg/package.js
-          mv pkg/package_bg.wasm /artifact/pkg/package_bg.wasm
+          mkdir artifact
+          mv index.html artifact/index.html
+          mv assets artifact/assets
+          mv pkg/package.js artifact/pkg/package.js
+          mv pkg/package_bg.wasm artifact/pkg/package_bg.wasm
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         if: success()
         with:
           name: wasme
-          path: /artifact
+          path: artifact
