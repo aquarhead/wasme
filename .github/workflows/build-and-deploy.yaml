@@ -42,11 +42,11 @@ jobs:
           DEPLOY_CMD: ${{ secrets.DEPLOY_CMD }}
         run: |
           mv artifact ~/wasme
+          echo "$DEPLOY_KEY" > ~/key.pem
+          chmod 600 ~/key.pem
           mkdir ~/.ssh
-          echo $DEPLOY_KEY > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
           echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
           chmod +x ~/wasme
-          echo $DEPLOY_CMD >> ./sync.sh
+          echo "$DEPLOY_CMD" > ./sync.sh
           chmod +x ./sync.sh
           ./sync.sh
