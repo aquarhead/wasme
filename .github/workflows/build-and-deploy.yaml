@@ -7,11 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Cache cargo build
+      - name: Cache build
         uses: actions/cache@v1
         with:
           path: target
-          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+      - name: Cache cargo bin
+        uses: actions/cache@v1
+        with:
+          path: ~/.cargo/bin
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('**/Cargo.lock') }}
       - name: Install cargo-make
         run: cargo install cargo-make
       - name: Build
@@ -32,10 +37,12 @@ jobs:
           path: artifact
       - name: Deploy
         if: success()
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mv artifact ~/wasme
           which rsync
-          echo ${{ secrets.DEPLOY_KEY }} > key.pem
+          echo $DEPLOY_KEY > key.pem
           chmod 600 key.pem
           echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
           chmod +x ~/wasme
