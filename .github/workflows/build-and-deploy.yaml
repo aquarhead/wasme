@@ -1,4 +1,4 @@
-name: Build and Package
+name: Build and Deploy
 
 on:
   push:
@@ -33,3 +33,14 @@ jobs:
         with:
           name: wasme
           path: artifact
+      - name: Deploy
+        if: success()
+        run: |
+          mv artifact ~/wasme
+          echo ${{ secrets.DEPLOY_KEY }} > key.pem
+          chmod 600 key.pem
+          echo ${{ SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
+          chmod +x ~/wasme
+          echo ${{ DEPLOY_CMD }} >> ./sync.sh
+          chmod +x ./sync.sh
+          ./sync.sh
