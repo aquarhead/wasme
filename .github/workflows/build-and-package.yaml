@@ -17,6 +17,7 @@ jobs:
       - name: Collect artifacts
         if: success()
         run: |
+          mkdir /artifact
           mv index.html /artifact/index.html
           mv assets /artifact/assets
           mv pkg/package.js /artifact/pkg/package.js
