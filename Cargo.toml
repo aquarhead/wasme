@@ -2,6 +2,7 @@
 name = "wasme"
 description = "About Me!"
 repository = "https://github.com/aquarhead/wasme"
+license = "CC BY-NC 4.0"
 version = "0.1.0"
 authors = ["LOU Xun <aquarhead@ela.build>"]
 edition = "2018"
@@ -12,4 +13,3 @@ crate-type = ["cdylib"]
 [dependencies]
 seed = "0.6"
 wasm-bindgen = "0.2"
-web-sys = "0.3"
