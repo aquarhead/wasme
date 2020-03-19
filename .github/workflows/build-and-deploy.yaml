@@ -1,13 +1,10 @@
 name: Build and Deploy
-
 on:
   push:
     branches: [master]
-
 jobs:
-  build:
+  build-n-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Cache cargo build
@@ -37,6 +34,7 @@ jobs:
         if: success()
         run: |
           mv artifact ~/wasme
+          which rsync
           echo ${{ secrets.DEPLOY_KEY }} > key.pem
           chmod 600 key.pem
           echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
