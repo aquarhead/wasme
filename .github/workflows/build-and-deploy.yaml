@@ -39,6 +39,7 @@ jobs:
         if: success()
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_CMD: ${{ secrets.DEPLOY_CMD }}
         run: |
           mv artifact ~/wasme
           mkdir ~/.ssh
@@ -46,6 +47,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
           chmod +x ~/wasme
-          echo ${{ secrets.DEPLOY_CMD }} >> ./sync.sh
+          echo $DEPLOY_CMD >> ./sync.sh
           chmod +x ./sync.sh
           ./sync.sh
