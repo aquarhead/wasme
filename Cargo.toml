@@ -2,7 +2,7 @@
 name = "wasme"
 description = "About Me!"
 repository = "https://github.com/aquarhead/wasme"
-license = "CC BY-NC 4.0"
+license = "CC-BY-NC-4.0"
 version = "0.1.0"
 authors = ["LOU Xun <aquarhead@ela.build>"]
 edition = "2018"
