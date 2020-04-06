@@ -1,18 +1,28 @@
 use seed::{prelude::*, *};
 use std::cell::Cell;
 
-struct Model {}
+struct Model {
+  show_friend_code: bool,
+}
 
 impl Default for Model {
   fn default() -> Self {
-    Self {}
+    Self {
+      show_friend_code: false,
+    }
   }
 }
 
 #[derive(Clone)]
-enum Msg {}
+enum Msg {
+  ShowFriendCode,
+}
 
-fn update(_: Msg, _: &mut Model, _: &mut impl Orders<Msg>) {}
+fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
+  match msg {
+    Msg::ShowFriendCode => model.show_friend_code = true,
+  }
+}
 
 fn hidden(text: &str, href: &str) -> Node<Msg> {
   a![class!["hidden"], attrs![At::Href => href, At::Target => "_blank"], text]
@@ -26,7 +36,7 @@ fn codelink(text: &str, href: &str) -> Node<Msg> {
   ]
 }
 
-fn view(_: &Model) -> impl View<Msg> {
+fn view(model: &Model) -> impl View<Msg> {
   let ref li_count = Cell::new(0);
 
   let link = |text: &str, href: &str| {
@@ -37,6 +47,15 @@ fn view(_: &Model) -> impl View<Msg> {
   let dead = |text: &str| {
     li_count.replace(li_count.get() + 1);
     li![span![class!["dead"], text]]
+  };
+
+  let switch = || {
+    li_count.replace(li_count.get() + 1);
+    if model.show_friend_code {
+      li![span!["SW-2985-1992-7098"]]
+    } else {
+      li![a!["Nintendo Friend Code"], simple_ev(Ev::Click, Msg::ShowFriendCode)]
+    }
   };
 
   div![
@@ -103,6 +122,7 @@ fn view(_: &Model) -> impl View<Msg> {
         link("Flickr", "https://www.flickr.com/photos/aquarhead"),
         link("Instagram", "https://www.instagram.com/aquarhead/"),
         link("Steam", "https://steamcommunity.com/id/aquarhead"),
+        switch(),
         link("Keybase", "https://keybase.io/aquarhead"),
         link("PGP Public Key", "assets/publickey.txt"),
         link("Currently Inked", "https://airtable.com/shrpMEu09HJ8o3Bkl"),
