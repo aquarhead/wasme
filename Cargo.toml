@@ -1,6 +1,6 @@
 [package]
 name = "wasme"
-description = "About Me!"
+description = "About Me in Rusty WASM"
 repository = "https://github.com/aquarhead/wasme"
 license = "CC-BY-NC-4.0"
 version = "0.1.0"
