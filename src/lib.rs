@@ -123,7 +123,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         link("Instagram", "https://www.instagram.com/aquarhead/"),
         link("Steam", "https://steamcommunity.com/id/aquarhead"),
         switch(),
-        link("Keybase", "https://keybase.io/aquarhead"),
+        link("Telegram", "https://t.me/aquarhead"),
         link("PGP Public Key", "assets/publickey.txt"),
         link("Currently Inked", "https://airtable.com/shrpMEu09HJ8o3Bkl"),
         link("CV", "https://stackoverflow.com/cv/aquarhead"),
