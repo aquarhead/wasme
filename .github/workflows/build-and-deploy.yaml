@@ -8,17 +8,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Cache build
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: target
-          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
-      - name: Cache cargo bin
-        uses: actions/cache@v1
-        with:
-          path: ~/.cargo/bin
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('**/Cargo.lock') }}
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('Cargo.lock') }}
       - name: Install cargo-make
-        run: cargo install cargo-make
+        run: |
+          wget https://github.com/sagiegurari/cargo-make/releases/download/0.32.5/cargo-make-v0.32.5-x86_64-unknown-linux-musl.zip
+          unzip cargo-make-v0.32.5-x86_64-unknown-linux-musl.zip
+          mv cargo-make-v0.32.5-x86_64-unknown-linux-musl/cargo-make ~/.cargo/bin/
       - name: Build
         run: cargo make build_release
       - name: Collect artifacts
@@ -36,17 +37,8 @@ jobs:
           name: wasme
           path: artifact
       - name: Deploy
-        if: success()
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_CMD: ${{ secrets.DEPLOY_CMD }}
-        run: |
-          mv artifact ~/wasme
-          echo "$DEPLOY_KEY" > ~/key.pem
-          chmod 600 ~/key.pem
-          mkdir ~/.ssh
-          echo ${{ secrets.SERVER_FINGERPRINT }} >> ~/.ssh/known_hosts
-          chmod +x ~/wasme
-          echo "$DEPLOY_CMD" > ./sync.sh
-          chmod +x ./sync.sh
-          ./sync.sh
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./artifact
+          cname: aqd.is
