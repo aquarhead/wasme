@@ -37,7 +37,7 @@ fn codelink(text: &str, href: &str) -> Node<Msg> {
 }
 
 fn view(model: &Model) -> impl IntoNodes<Msg> {
-  let ref li_count = Cell::new(0);
+  let li_count = Cell::new(0);
 
   let link = |text: &str, href: &str| {
     li_count.replace(li_count.get() + 1);
@@ -61,8 +61,8 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
   div![
     div![
       class!["iam"],
-      h1!["Lou ", small!["'aquarhead'"], " Xun",],
-      h3!["a Rusty developer"],
+      h1!["LOU ", small!["'aquarhead'"], " Xun",],
+      h3!["a Rusty programmer"],
     ],
     div![
       class!["daily"],
