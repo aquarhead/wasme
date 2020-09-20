@@ -99,7 +99,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
       ],
       ol![
         attrs![At::Start => li_count.get() + 1],
-        link("Expanse", "https://ela.build/expense"),
+        link("Expense", "https://ela.build/expense"),
         link("HaloSir", "https://github.com/HaloWordApp/halosir"),
         link("One Clock", "https://ela.build/oneclock"),
         link("Shoka", "https://github.com/TeaWhen/Shoka"),
@@ -113,7 +113,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         attrs![At::Start => li_count.get() + 1],
         link("GitHub", "https://github.com/aquarhead"),
         link("Twitter", "https://twitter.com/aquarhead"),
-        link("Blog", "https://blog.aquarhead.me/"),
+        link("Blog", "https://blog.aqd.is/"),
         link("Speaker Deck", "https://speakerdeck.com/aquarhead"),
         link("Bangumi", "https://bgm.tv/user/aquarhead"),
         link("Goodreads", "https://www.goodreads.com/aquarhead"),
