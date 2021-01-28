@@ -13,6 +13,10 @@ impl Default for Model {
   }
 }
 
+fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
+  Model::default()
+}
+
 #[derive(Clone)]
 enum Msg {
   ShowFriendCode,
@@ -25,15 +29,11 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
 }
 
 fn hidden(text: &str, href: &str) -> Node<Msg> {
-  a![class!["hidden"], attrs![At::Href => href, At::Target => "_blank"], text]
+  a![C!["hidden"], attrs![At::Href => href, At::Target => "_blank"], text]
 }
 
 fn codelink(text: &str, href: &str) -> Node<Msg> {
-  a![
-    class!["codelink"],
-    attrs![At::Href => href, At::Target => "_blank"],
-    text
-  ]
+  a![C!["codelink"], attrs![At::Href => href, At::Target => "_blank"], text]
 }
 
 fn view(model: &Model) -> impl IntoNodes<Msg> {
@@ -46,7 +46,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
 
   let dead = |text: &str| {
     li_count.replace(li_count.get() + 1);
-    li![span![class!["dead"], text]]
+    li![span![C!["dead"], text]]
   };
 
   let switch = || {
@@ -54,18 +54,18 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
     if model.show_friend_code {
       li![span!["SW-2985-1992-7098"]]
     } else {
-      li![a!["Nintendo Friend Code"], simple_ev(Ev::Click, Msg::ShowFriendCode)]
+      li![a!["Nintendo Friend Code"], ev(Ev::Click, |_| Msg::ShowFriendCode)]
     }
   };
 
   div![
     div![
-      class!["iam"],
+      C!["iam"],
       h1!["LOU ", small!["'aquarhead'"], " Xun",],
       h3!["a Rusty programmer"],
     ],
     div![
-      class!["daily"],
+      C!["daily"],
       h2!["Daily"],
       code![
         "fun (",
@@ -78,7 +78,6 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         attrs![At::Start => li_count.get() + 1],
         link("EVE Online", "https://www.eveonline.com/"),
         dead("DUST 514"),
-        dead("Gunjack"),
         link("ESI", "https://esi.evetech.net/"),
         link(
           "EVE Chat",
@@ -87,7 +86,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
       ]
     ],
     div![
-      class!["indie"],
+      C!["indie"],
       h2!["Indie"],
       code![
         "(",
@@ -107,7 +106,7 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
       ]
     ],
     div![
-      class!["links"],
+      C!["links"],
       h2!["Links"],
       ol![
         attrs![At::Start => li_count.get() + 1],
@@ -129,11 +128,11 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         link("CV", "https://stackoverflow.com/cv/aquarhead"),
       ]
     ],
-    div![class!["heart"], h2!["Ást"], code!["Ég elska @zinnialulu"]],
+    div![C!["heart"], h2!["Ást"], code!["Ég elska @zinnialulu"]],
   ]
 }
 
 #[wasm_bindgen(start)]
 pub fn render() {
-  App::builder(update, view).build_and_start();
+  App::start("app", init, update, view);
 }
