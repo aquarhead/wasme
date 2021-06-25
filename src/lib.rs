@@ -1,16 +1,10 @@
 use seed::{prelude::*, *};
 use std::cell::Cell;
 
+#[derive(Default)]
 struct Model {
   show_friend_code: bool,
-}
-
-impl Default for Model {
-  fn default() -> Self {
-    Self {
-      show_friend_code: false,
-    }
-  }
+  show_discord_tag: bool,
 }
 
 fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
@@ -20,11 +14,13 @@ fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
 #[derive(Clone)]
 enum Msg {
   ShowFriendCode,
+  ShowDiscordTag,
 }
 
 fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
   match msg {
     Msg::ShowFriendCode => model.show_friend_code = true,
+    Msg::ShowDiscordTag => model.show_discord_tag = true,
   }
 }
 
@@ -55,6 +51,15 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
       li![span!["SW-2985-1992-7098"]]
     } else {
       li![a!["Nintendo Friend Code"], ev(Ev::Click, |_| Msg::ShowFriendCode)]
+    }
+  };
+
+  let discord = || {
+    li_count.replace(li_count.get() + 1);
+    if model.show_discord_tag {
+      li![span!["aquarhead#3502"]]
+    } else {
+      li![a!["Discord Tag"], ev(Ev::Click, |_| Msg::ShowDiscordTag)]
     }
   };
 
@@ -122,9 +127,9 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         link("Instagram", "https://www.instagram.com/aquarhead/"),
         link("Steam", "https://steamcommunity.com/id/aquarhead"),
         switch(),
+        discord(),
         link("Telegram", "https://t.me/aquarhead"),
         link("PGP Public Key", "assets/publickey.txt"),
-        link("Currently Inked", "https://airtable.com/shrpMEu09HJ8o3Bkl"),
         link("CV", "https://stackoverflow.com/cv/aquarhead"),
       ]
     ],

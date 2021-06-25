@@ -12,13 +12,13 @@ args = ["build", "--release"]
 
 [tasks.create_wasm]
 description = "Build with wasm-pack"
-install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V", min_version = "0.8.0" }
+install_crate = { crate_name="wasm-pack", binary="wasm-pack", test_arg="-V", min_version="0.8.0" }
 command = "wasm-pack"
 args = ["build", "--target", "web", "--out-name", "package", "--dev"]
 
 [tasks.create_wasm_release]
 description = "Build with wasm-pack"
-install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V", min_version = "0.8.0" }
+install_crate = { crate_name="wasm-pack", binary="wasm-pack", test_arg="-V", min_version="0.8.0" }
 command = "wasm-pack"
 args = ["build", "--target", "web", "--out-name", "package"]
 
@@ -40,7 +40,7 @@ watch = { ignore_pattern="pkg/*" }
 
 [tasks.serve]
 description = "Start server"
-install_crate = { crate_name = "microserver", binary = "microserver", test_arg = "-h" }
+install_crate = { crate_name="microserver", binary="microserver", test_arg="-h" }
 workspace = false
 command = "microserver"
 args = ["--port", "8000"]
@@ -49,18 +49,3 @@ args = ["--port", "8000"]
 description = "Combine the build and serve tasks"
 workspace = false
 dependencies = ["build", "serve"]
-
-# ---- LINT ----
-
-[tasks.clippy]
-description = "Lint with Clippy"
-clear = true
-workspace = false
-install_crate = { rustup_component_name = "clippy", binary = "cargo-clippy", test_arg = "--help" }
-command = "cargo"
-args = ["clippy", "--all-features", "--", "--deny", "warnings", "--deny", "clippy::pedantic", "--deny", "clippy::nursery"]
-
-[tasks.fmt]
-description = "Format with rustfmt"
-workspace = false
-dependencies = ["fmt"]
