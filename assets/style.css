@@ -1,19 +1,11 @@
 @charset "utf-8";
-@import "https://fonts.googleapis.com/css?family=Alegreya+SC|Merriweather|Tangerine";
-@import "https://fonts.googleapis.com/earlyaccess/hannari.css";
-
-@font-face {
-  font-family: "Fira Code";
-  src:
-    local("Fira Code"),
-    url("https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf")
-    format("truetype");
-}
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=Merriweather&family=Shippori+Mincho&family=Tangerine&display=swap');
+@import "https://www.monolisa.dev/api/fonts/initial";
 
 body {
   margin: 4em 0 2em 2em;
   background: #FCFAF2;
-  font-family: "Merriweather", "Hannari", serif;
+  font-family: "Merriweather", "Shippori Mincho", serif;
   font-size: 1em;
 }
 
@@ -54,7 +46,7 @@ a, a:visited {
 }
 
 code {
-  font-family: "Fira Code", monospace;
+  font-family: "MonoLisa", monospace;
   font-size: 1em;
 }
 
@@ -68,7 +60,7 @@ a.hidden, a.hidden:visited {
 }
 
 ol {
-  font-family: "Merriweather", "Hannari", serif;
+  font-family: "Merriweather", "Shippori Mincho", serif;
   font-size: 1.1em;
   list-style-type: hiragana;
   padding-left: 2em;
@@ -82,8 +74,4 @@ ol a, ol a:visited {
 .dead {
   color: #81C7D4;
   text-decoration: line-through;
-}
-
-.ly {
-  color: #005CAF;
 }
