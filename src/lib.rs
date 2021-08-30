@@ -40,11 +40,6 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
     li![a![attrs![At::Href => href, At::Target => "_blank"], text]]
   };
 
-  let dead = |text: &str| {
-    li_count.replace(li_count.get() + 1);
-    li![span![C!["dead"], text]]
-  };
-
   let switch = || {
     li_count.replace(li_count.get() + 1);
     if model.show_friend_code {
@@ -73,34 +68,15 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
       C!["daily"],
       h2!["Daily"],
       code![
-        "fun (",
-        codelink("CCP_Games", "https://www.ccpgames.com/"),
-        ", SE) -> ",
-        hidden("true", "https://www.erlang.org/"),
-        ".",
+        codelink("&mut ", "https://www.rust-lang.org/"),
+        hidden("Controlant", "https://controlant.com/")
       ],
-      ol![
-        attrs![At::Start => li_count.get() + 1],
-        link("EVE Online", "https://www.eveonline.com/"),
-        dead("DUST 514"),
-        link("ESI", "https://esi.evetech.net/"),
-        link(
-          "EVE Chat",
-          "https://www.eveonline.com/article/pms1i4/chat-system-an-update-and-the-future"
-        ),
-      ]
+      ol![]
     ],
     div![
       C!["indie"],
       h2!["Indie"],
-      code![
-        "(",
-        hidden("&mut", "https://www.rust-lang.org/"),
-        " Wizard) ",
-        hidden("|>", "https://elixir-lang.org/"),
-        " ",
-        codelink("ElaWorkshop", "https://github.com/ElaWorkshop"),
-      ],
+      code!["&", hidden("ElaWorkshop", "https://github.com/ElaWorkshop"),],
       ol![
         attrs![At::Start => li_count.get() + 1],
         link("Expense", "https://ela.build/expense"),
