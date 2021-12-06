@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=Merriweather&family=Shippori+Mincho&family=Tangerine&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;700&family=Merriweather&family=Shippori+Mincho&family=Tangerine&display=swap');
 @import "https://www.monolisa.dev/api/fonts/initial";
 
 body {
@@ -11,7 +11,7 @@ body {
 
 h1 {
   color: #080808;
-  font-family: "Alegreya SC", serif;
+  font-family: "Averia Serif Libre", serif;
   font-size: 2.5em;
   font-weight: bold;
   margin: 0;
@@ -27,13 +27,14 @@ h1 small {
 
 .iam h3 {
   color: #828282;
+  font-family: "Averia Serif Libre", serif;
   font-size: 0.9em;
   font-weight: 300;
   margin: 0px;
 }
 
 h2 {
-  font-family: "Alegreya SC", serif;
+  font-family: "Averia Serif Libre", serif;
   margin: 1em 0 0.3em 0;
 }
 
