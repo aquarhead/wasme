@@ -82,8 +82,6 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         link("Expense", "https://ela.build/expense"),
         link("HaloSir", "https://github.com/HaloWordApp/halosir"),
         link("One Clock", "https://ela.build/oneclock"),
-        link("Shoka", "https://github.com/TeaWhen/Shoka"),
-        link("FuncDiff", "https://github.com/spawnfest/func_diff"),
       ]
     ],
     div![
@@ -106,7 +104,6 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         discord(),
         link("Telegram", "https://t.me/aquarhead"),
         link("PGP Public Key", "assets/publickey.txt"),
-        link("CV", "https://stackoverflow.com/cv/aquarhead"),
       ]
     ],
     div![C!["heart"], h2!["Ást"], code!["Ég elska @zinnialulu"]],
