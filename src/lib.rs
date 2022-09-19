@@ -97,7 +97,6 @@ fn view(model: &Model) -> impl IntoNodes<Msg> {
         link("Goodreads", "https://www.goodreads.com/aquarhead"),
         link("Letterboxd", "https://letterboxd.com/aquarhead/"),
         link("Bandcamp", "https://bandcamp.com/aquarhead"),
-        link("Flickr", "https://www.flickr.com/photos/aquarhead"),
         link("Instagram", "https://www.instagram.com/aquarhead/"),
         link("Steam", "https://steamcommunity.com/id/aquarhead"),
         switch(),
