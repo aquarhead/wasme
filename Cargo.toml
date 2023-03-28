@@ -11,7 +11,7 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-seed = "0.9"
+seed = "0.10"
 wasm-bindgen = "0.2"
 
 [profile.dev]
