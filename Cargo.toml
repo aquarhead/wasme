@@ -3,19 +3,9 @@ name = "wasme"
 description = "About Me in Rusty WASM"
 repository = "https://github.com/aquarhead/wasme"
 license = "CC-BY-NC-4.0"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["LOU Xun <aquarhead@ela.build>"]
 edition = "2021"
 
-[lib]
-crate-type = ["cdylib"]
-
 [dependencies]
-seed = "0.10"
-wasm-bindgen = "0.2"
-
-[profile.dev]
-debug = 0
-
-[profile.release]
-debug = 0
+sycamore = { git = "https://github.com/sycamore-rs/sycamore" }

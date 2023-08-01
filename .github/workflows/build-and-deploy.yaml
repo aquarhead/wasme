@@ -6,41 +6,34 @@ env:
   CARGO_INCREMENTAL: 0
 jobs:
   build-n-deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v3
+      - name: Cache build
+        uses: actions/cache@v3
         with:
-          toolchain: stable
-          profile: minimal
-      - uses: Swatinem/rust-cache@v1
-      - name: Install cargo-make
-        uses: actions-rs/cargo@v1
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+            /usr/share/rust/.rustup/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          command: install
-          args: cargo-make
-      - name: Build release
-        uses: actions-rs/cargo@v1
-        with:
-          command: make
-          args: release
-      - name: Collect artifacts
-        if: success()
-        run: |
-          mkdir -p artifact/pkg
-          mv index.html artifact/index.html
-          mv assets artifact/assets
-          mv pkg/package.js artifact/pkg/package.js
-          mv pkg/package_bg.wasm artifact/pkg/package_bg.wasm
+          targets: wasm32-unknown-unknown
+      - run: cargo install trunk
+      - run: trunk build
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
-        if: success()
+        uses: actions/upload-artifact@v3
         with:
           name: wasme
-          path: artifact
+          path: dist
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./artifact
+          publish_dir: ./dist
           cname: aqd.is

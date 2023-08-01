@@ -42,7 +42,8 @@ a:hover {
   background-color: #FEDFE1;
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
 }
 
@@ -51,24 +52,28 @@ code {
   font-size: 1em;
 }
 
-a.codelink, a.codelink:visited {
+a.codelink,
+a.codelink:visited {
   color: #51A8DD;
 
 }
 
-a.hidden, a.hidden:visited {
+a.hidden,
+a.hidden:visited {
   color: unset;
 }
 
 ol {
   font-family: "Merriweather", "Shippori Mincho", serif;
   font-size: 1.1em;
+  line-height: 1.3em;
   list-style-type: hiragana;
   padding-left: 2em;
   color: #66BAB7;
 }
 
-ol a, ol a:visited {
+ol a,
+ol a:visited {
   color: #58B2DC;
 }
 

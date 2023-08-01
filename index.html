@@ -10,8 +10,8 @@
   <title>about(&mut me);</title>
 
   <link href="https://unpkg.com/normalize.css@8.0.1/normalize.css" rel="stylesheet" />
-  <link href="/assets/style.css" rel="stylesheet" />
-  <link href="/assets/favicon.ico" rel="icon" type="image/ico" />
+  <link data-trunk href="/assets/style.css" rel="css" />
+  <link data-trunk href="/assets/favicon.ico" rel="icon" type="image/ico" />
 </head>
 
 <body class="index">
@@ -60,13 +60,6 @@
       }
     }
   </style>
-
-  <section id="app"></section>
-
-  <script type="module">
-    import init from '/pkg/package.js';
-    init('/pkg/package_bg.wasm');
-  </script>
 </body>
 
 </html>
