@@ -4,7 +4,7 @@ description = "About Me in Rusty WASM"
 repository = "https://github.com/aquarhead/wasme"
 license = "CC-BY-NC-4.0"
 version = "0.2.0"
-authors = ["LOU Xun <aquarhead@ela.build>"]
+authors = ["LOU Xun <aquarhead@gmail.com>"]
 edition = "2021"
 
 [dependencies]
