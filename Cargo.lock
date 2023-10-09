@@ -14,10 +14,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "autocfg"
-version = "1.1.0"
+name = "allocator-api2"
+version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
+checksum = "0942ffc6dcaadf03badf6e6a2d0228460359d5e34b57ccdc720b7382dfbd5ec5"
 
 [[package]]
 name = "bumpalo"
@@ -32,31 +32,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "equivalent"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
+
+[[package]]
 name = "getrandom"
 version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
 dependencies = [
  "cfg-if",
- "js-sys",
  "libc",
  "wasi",
- "wasm-bindgen",
 ]
 
 [[package]]
 name = "hashbrown"
-version = "0.12.3"
+version = "0.14.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
-
-[[package]]
-name = "hashbrown"
-version = "0.13.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43a3c133739dddd0d2990f9a4bdf8eb4b21ef50e4851ca85ab661199821d510e"
+checksum = "7dfda62a12f55daeae5015f81b0baea145391cb4520f86c248fc615d72640d12"
 dependencies = [
  "ahash",
+ "allocator-api2",
 ]
 
 [[package]]
@@ -70,12 +69,12 @@ dependencies = [
 
 [[package]]
 name = "indexmap"
-version = "1.9.3"
+version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
+checksum = "8adf3ddd720272c6ea8bf59463c04e0f93d0bbf7c5439b691bca2987e0270897"
 dependencies = [
- "autocfg",
- "hashbrown 0.12.3",
+ "equivalent",
+ "hashbrown",
 ]
 
 [[package]]
@@ -179,16 +178,16 @@ dependencies = [
 
 [[package]]
 name = "smallvec"
-version = "1.11.0"
+version = "1.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62bb4feee49fdd9f707ef802e22365a35de4b7b299de4763d44bfea899442ff9"
+checksum = "942b4a808e05215192e39f4ab80813e599068285906cc91aa64f923db842bd5a"
 
 [[package]]
 name = "sycamore"
-version = "0.9.0-beta.1"
-source = "git+https://github.com/sycamore-rs/sycamore#aba1a9e85f6a2ca9908e083265fc40f95efedd2f"
+version = "0.9.0-beta.2"
+source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
 dependencies = [
- "hashbrown 0.13.2",
+ "hashbrown",
  "indexmap",
  "js-sys",
  "paste",
@@ -202,17 +201,17 @@ dependencies = [
 
 [[package]]
 name = "sycamore-core"
-version = "0.9.0-beta.1"
-source = "git+https://github.com/sycamore-rs/sycamore#aba1a9e85f6a2ca9908e083265fc40f95efedd2f"
+version = "0.9.0-beta.2"
+source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
 dependencies = [
- "hashbrown 0.13.2",
+ "hashbrown",
  "sycamore-reactive",
 ]
 
 [[package]]
 name = "sycamore-macro"
-version = "0.9.0-beta.1"
-source = "git+https://github.com/sycamore-rs/sycamore#aba1a9e85f6a2ca9908e083265fc40f95efedd2f"
+version = "0.9.0-beta.2"
+source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
 dependencies = [
  "once_cell",
  "proc-macro2",
@@ -223,23 +222,20 @@ dependencies = [
 
 [[package]]
 name = "sycamore-reactive"
-version = "0.9.0-beta.1"
-source = "git+https://github.com/sycamore-rs/sycamore#aba1a9e85f6a2ca9908e083265fc40f95efedd2f"
+version = "0.9.0-beta.2"
+source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
 dependencies = [
- "bumpalo",
- "getrandom",
- "hashbrown 0.13.2",
- "indexmap",
+ "paste",
  "slotmap",
  "smallvec",
 ]
 
 [[package]]
 name = "sycamore-web"
-version = "0.9.0-beta.1"
-source = "git+https://github.com/sycamore-rs/sycamore#aba1a9e85f6a2ca9908e083265fc40f95efedd2f"
+version = "0.9.0-beta.2"
+source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
 dependencies = [
- "hashbrown 0.13.2",
+ "hashbrown",
  "html-escape",
  "indexmap",
  "js-sys",
