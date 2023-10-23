@@ -185,7 +185,7 @@ checksum = "942b4a808e05215192e39f4ab80813e599068285906cc91aa64f923db842bd5a"
 [[package]]
 name = "sycamore"
 version = "0.9.0-beta.2"
-source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
+source = "git+https://github.com/sycamore-rs/sycamore#9beed5200b0f36b5cff391cbe66d4199aa6e5edf"
 dependencies = [
  "hashbrown",
  "indexmap",
@@ -202,7 +202,7 @@ dependencies = [
 [[package]]
 name = "sycamore-core"
 version = "0.9.0-beta.2"
-source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
+source = "git+https://github.com/sycamore-rs/sycamore#9beed5200b0f36b5cff391cbe66d4199aa6e5edf"
 dependencies = [
  "hashbrown",
  "sycamore-reactive",
@@ -211,7 +211,7 @@ dependencies = [
 [[package]]
 name = "sycamore-macro"
 version = "0.9.0-beta.2"
-source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
+source = "git+https://github.com/sycamore-rs/sycamore#9beed5200b0f36b5cff391cbe66d4199aa6e5edf"
 dependencies = [
  "once_cell",
  "proc-macro2",
@@ -223,7 +223,7 @@ dependencies = [
 [[package]]
 name = "sycamore-reactive"
 version = "0.9.0-beta.2"
-source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
+source = "git+https://github.com/sycamore-rs/sycamore#9beed5200b0f36b5cff391cbe66d4199aa6e5edf"
 dependencies = [
  "paste",
  "slotmap",
@@ -233,7 +233,7 @@ dependencies = [
 [[package]]
 name = "sycamore-web"
 version = "0.9.0-beta.2"
-source = "git+https://github.com/sycamore-rs/sycamore#1acd2c3c1770c4403ce7d9dce6622a283f08c015"
+source = "git+https://github.com/sycamore-rs/sycamore#9beed5200b0f36b5cff391cbe66d4199aa6e5edf"
 dependencies = [
  "hashbrown",
  "html-escape",
