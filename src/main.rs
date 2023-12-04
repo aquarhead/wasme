@@ -2,11 +2,11 @@ use std::ops::AddAssign;
 use sycamore::prelude::*;
 
 #[component(inline_props)]
-fn Item<'a, G: Html>(cx: Scope<'a>, count: &'a Signal<i32>, children: Children<'a, G>) -> View<G> {
-  count.modify().add_assign(1);
+fn Item<G: Html>(count: Signal<i32>, children: Children<G>) -> View<G> {
+  count.update(|c| c.add_assign(1));
 
-  let inner = children.call(cx);
-  view! {cx,
+  let inner = children.call();
+  view! {
     li {
       (inner)
     }
@@ -22,8 +22,8 @@ struct LinkProps {
 }
 
 #[component]
-fn Link<'a, G: Html>(cx: Scope<'a>, props: LinkProps) -> View<G> {
-  view! {cx,
+fn Link<G: Html>(props: LinkProps) -> View<G> {
+  view! {
       a(class=props.class, target="_blank", href=props.href) {
         (props.text)
       }
@@ -31,15 +31,15 @@ fn Link<'a, G: Html>(cx: Scope<'a>, props: LinkProps) -> View<G> {
 }
 
 fn main() {
-  sycamore::render(|cx| {
-    let daily_count = create_signal(cx, 0);
-    let indie_count = create_signal(cx, 0);
-    let links_count = create_signal(cx, 0);
+  sycamore::render(|| {
+    let daily_count = create_signal(0);
+    let indie_count = create_signal(0);
+    let links_count = create_signal(0);
 
-    let show_switch = create_signal(cx, false);
-    let show_discord = create_signal(cx, false);
+    let show_switch = create_signal(false);
+    let show_discord = create_signal(false);
 
-    view! { cx,
+    view! {
       div {
         div(class="iam") {
           h1 {
@@ -80,7 +80,7 @@ fn main() {
             Link(class="hidden", text="ElaWorkshop", href="https://github.com/ElaWorkshop")
           }
 
-          ol(start=(*daily_count.get() + 1)) {
+          ol(start=(daily_count.get() + 1)) {
             Item(count = indie_count) {
               Link(text="Expense", href="https://ela.build/expense")
             }
@@ -95,7 +95,7 @@ fn main() {
 
         div(class="links") {
           h2 { "Links" }
-          ol(start=(*daily_count.get() + *indie_count.get() + 1)) {
+          ol(start=(daily_count.get() + indie_count.get() + 1)) {
             Item(count = links_count) {
               Link(text="GitHub", href="https://github.com/aquarhead")
             }
@@ -121,17 +121,17 @@ fn main() {
               Link(text="Steam", href="https://steamcommunity.com/id/aquarhead")
             }
             Item(count = links_count) {
-              (if *show_switch.get() {
-                view! { cx, span { "SW-2985-1992-7098" } }
+              (if show_switch.get() {
+                view! { span { "SW-2985-1992-7098" } }
               } else {
-                view! { cx, a(on:click=|_| { show_switch.set(true) }) { "Nintendo" } }
+                view! { a(on:click= move |_| { show_switch.set(true) }) { "Nintendo" } }
               })
             }
             Item(count = links_count) {
-              (if *show_discord.get() {
-                view! { cx, span { "aquarhead" } }
+              (if show_discord.get() {
+                view! { span { "aquarhead" } }
               } else {
-                view! { cx, a(on:click=|_| { show_discord.set(true) }) { "Discord" } }
+                view! { a(on:click= move |_| { show_discord.set(true) }) { "Discord" } }
               })
             }
             Item(count = links_count) {
