@@ -103,7 +103,7 @@ fn main() {
               Link(text="Blog", href="https://blog.aqd.is/")
             }
             Item(count = links_count) {
-              Link(text="Strava", href="https://www.strava.com/athletes/108132560")
+              Link(text="Strava", href="https://www.strava.com/athletes/aquarhead")
             }
             Item(count = links_count) {
               Link(text="Speaker Deck", href="https://speakerdeck.com/aquarhead")
@@ -136,6 +136,9 @@ fn main() {
             }
             Item(count = links_count) {
               Link(text="Telegram", href="https://t.me/aquarhead")
+            }
+            Item(count = links_count) {
+              Link(text="Signal", href="https://signal.me/#eu/4J4a2A28b5VzF2sIqLeIARupgyFGFQq_6I7_HDeTGGLhen3IWv9CiqH1bY_Y2Zxe")
             }
             Item(count = links_count) {
               Link(text="PGP Public Key", href="assets/publickey.txt")
