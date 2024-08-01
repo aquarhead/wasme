@@ -32,7 +32,6 @@ fn Link<G: Html>(props: LinkProps) -> View<G> {
 
 fn main() {
   sycamore::render(|| {
-    let daily_count = create_signal(0);
     let indie_count = create_signal(0);
     let links_count = create_signal(0);
 
@@ -53,26 +52,6 @@ fn main() {
             " programmer" }
         }
 
-        div(class="daily") {
-          h2 { "Daily" }
-          code {
-            "&mut "
-            Link(class="hidden", text="Controlant", href="https://controlant.com/")
-          }
-
-          ol {
-            Item(count = daily_count) {
-              Link(text="ctrl-cidr", href="https://github.com/controlant-org/ctrl-cidr")
-            }
-            Item(count = daily_count) {
-              Link(text="r5d3", href="https://github.com/controlant-org/r5d3")
-            }
-            Item(count = daily_count) {
-              Link(text="aws-auth-operator", href="https://github.com/controlant-org/aws-auth-operator")
-            }
-          }
-        }
-
         div(class="indie") {
           h2 { "Indie" }
           code {
@@ -80,7 +59,7 @@ fn main() {
             Link(class="hidden", text="ElaWorkshop", href="https://github.com/ElaWorkshop")
           }
 
-          ol(start=(daily_count.get() + 1)) {
+          ol {
             Item(count = indie_count) {
               Link(text="Expense", href="https://ela.build/expense")
             }
@@ -95,7 +74,7 @@ fn main() {
 
         div(class="links") {
           h2 { "Links" }
-          ol(start=(daily_count.get() + indie_count.get() + 1)) {
+          ol(start=(indie_count.get() + 1)) {
             Item(count = links_count) {
               Link(text="GitHub", href="https://github.com/aquarhead")
             }
