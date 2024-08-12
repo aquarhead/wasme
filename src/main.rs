@@ -24,9 +24,9 @@ struct LinkProps {
 #[component]
 fn Link<G: Html>(props: LinkProps) -> View<G> {
   view! {
-      a(class=props.class, target="_blank", href=props.href) {
-        (props.text)
-      }
+    a(class=props.class, target="_blank", href=props.href) {
+      (props.text)
+    }
   }
 }
 
