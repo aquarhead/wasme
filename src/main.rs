@@ -120,7 +120,7 @@ fn main() {
               Link(text="Signal", href="https://signal.me/#eu/4J4a2A28b5VzF2sIqLeIARupgyFGFQq_6I7_HDeTGGLhen3IWv9CiqH1bY_Y2Zxe")
             }
             Item(count = links_count) {
-              Link(text="PGP Public Key", href="assets/publickey.txt")
+              Link(text="PGP Public Key", href="publickey.txt")
             }
           }
         }
