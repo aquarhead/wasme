@@ -32,7 +32,6 @@ fn Link<G: Html>(props: LinkProps) -> View<G> {
 
 fn main() {
   sycamore::render(|| {
-    let indie_count = create_signal(0);
     let links_count = create_signal(0);
 
     let show_switch = create_signal(false);
@@ -49,32 +48,13 @@ fn main() {
           h3 {
             "a "
             Link(class="hidden", text="Rusty", href="https://www.rust-lang.org/")
-            " programmer" }
+            " programmer"
+          }
         }
 
-        div(class="indie") {
-          h2 { "Indie" }
-          code {
-            "&'static "
-            Link(class="hidden", text="ElaWorkshop", href="https://github.com/ElaWorkshop")
-          }
-
+        div {
+          h2 { "Find my.." }
           ol {
-            Item(count = indie_count) {
-              Link(text="Expense", href="https://ela.build/expense")
-            }
-            Item(count = indie_count) {
-              Link(text="HaloSir", href="https://github.com/HaloWordApp/halosir")
-            }
-            Item(count = indie_count) {
-              Link(text="One Clock", href="https://ela.build/oneclock")
-            }
-          }
-        }
-
-        div(class="links") {
-          h2 { "Links" }
-          ol(start=(indie_count.get() + 1)) {
             Item(count = links_count) {
               Link(text="GitHub", href="https://github.com/aquarhead")
             }
