@@ -2,7 +2,7 @@ use std::ops::AddAssign;
 use sycamore::prelude::*;
 
 #[component(inline_props)]
-fn Item<G: Html>(count: Signal<i32>, children: Children<G>) -> View<G> {
+fn Item(count: Signal<i32>, children: Children) -> View {
   count.update(|c| c.add_assign(1));
 
   let inner = children.call();
@@ -22,7 +22,7 @@ struct LinkProps {
 }
 
 #[component]
-fn Link<G: Html>(props: LinkProps) -> View<G> {
+fn Link(props: LinkProps) -> View {
   view! {
     a(class=props.class, target="_blank", href=props.href) {
       (props.text)
