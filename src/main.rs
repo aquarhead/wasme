@@ -94,9 +94,6 @@ fn main() {
               })
             }
             Item(count = links_count) {
-              Link(text="Telegram", href="https://t.me/aquarhead")
-            }
-            Item(count = links_count) {
               Link(text="Signal", href="https://signal.me/#eu/3_rMma10dyh8IdzR9VrYPIkhLQRevVviOdgjIiss9O_s5SD66X1FjJa2HGlcJS6_")
             }
             Item(count = links_count) {
