@@ -5,7 +5,7 @@ repository = "https://github.com/aquarhead/wasme"
 license = "CC-BY-NC-4.0"
 version = "0.3.0"
 authors = ["LOU Xun <aquarhead@gmail.com>"]
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 sycamore = "0.9"
